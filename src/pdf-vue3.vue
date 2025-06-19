@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref, onUnmounted, Ref, computed, watch, onBeforeMount } from "vue";
+import { ref, onUnmounted, Ref, computed, watch, onMounted } from "vue";
 import type { PDFDocumentProxy } from "./index";
+import * as pdfjs from 'pdfjs-dist/legacy/build/pdf.min.js'
 
 let GlobalWorkerOptions: any, getDocument: any;
 const dpr = ref(1);
@@ -260,8 +261,7 @@ const setWidth = () => {
   containerWidth.value = container.value.offsetWidth;
 };
 const isAddEvent = ref(false);
-onBeforeMount(async () => {
-  const pdfjs = (await import("pdfjs-dist/legacy/build/pdf.min.js")).default;
+onMounted(async () => {
   GlobalWorkerOptions = pdfjs.GlobalWorkerOptions;
   getDocument = pdfjs.getDocument;
   const workerSrc = new URL(
