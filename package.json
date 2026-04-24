@@ -1,6 +1,6 @@
 {
   "name": "yq-pdf-vue3",
-  "version": "1.0.14",
+  "version": "1.0.18",
   "description": "vue3 pdf viewer",
   "main": "./dist/yq-pdf-vue3.js",
   "types": "./dist/types/index.d.ts",
